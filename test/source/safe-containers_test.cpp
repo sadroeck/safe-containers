@@ -1,8 +1,8 @@
 #include "safe-containers/safe-containers.hpp"
 
-#include <catch2/catch_test_macros.hpp>
+#include <gtest/gtest.h>
 
-TEST_CASE("Name is safe-containers", "[library]")
+TEST(safe_vector, hello_world)
 {
-  REQUIRE(name() == "safe-containers");
+    EXPECT_EQ(name(), "safe-containers");
 }

@@ -10,7 +10,6 @@ project(
     LANGUAGES NONE
 )
 
-include(cmake/project-is-top-level.cmake)
 include(cmake/variables.cmake)
 
 # ---- Declare library ----
@@ -30,9 +29,6 @@ target_include_directories(
 )
 
 target_compile_features(safe-containers_safe-containers INTERFACE cxx_std_17)
-
-find_package(fmt REQUIRED)
-target_link_libraries(safe-containers_safe-containers INTERFACE fmt::fmt)
 
 # ---- Install rules ----
 
