@@ -98,7 +98,7 @@ template <typename T, typename E>
 }
 
 template <typename Res>
-inline auto ValueOrVoid(Res&& res) noexcept
+inline auto value_or_void(Res&& res) noexcept
 {
     using R = std::decay_t<Res>;
     if constexpr (std::is_same_v<typename R::value_type, void>)
@@ -136,12 +136,12 @@ inline auto ValueOrVoid(Res&& res) noexcept
     __extension__({                                                \
         auto&& x = result;                                         \
         if (x.has_error()) return cpp::fail(std::move(x).error()); \
-        ValueOrVoid(x);                                            \
+        value_or_void(x);                                          \
     })
 
 #define TRY_CHECK(result)                                                          \
     __extension__({                                                                \
         auto&& x = result;                                                         \
         if (x.has_error()) return ::result_ext::LossyErrorConverter(std::move(x)); \
-        ValueOrVoid(x);                                                            \
+        value_or_void(x);                                                          \
     })
